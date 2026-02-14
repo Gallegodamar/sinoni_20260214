@@ -1,14 +1,34 @@
-# Run and deploy your AI Studio app
+# Sinonimoen Erronka
 
-This contains everything you need to run your app locally.
+Aplicacion PWA para practicar sinonimos en euskera con modo multijugador y modo individual con historial.
 
-## Run Locally
+## Requisitos
 
-**Prerequisites:**  Node.js
+- Node.js 20+
 
+## Configuracion
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Define estas variables en `.env.local`:
+
+```bash
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
+```
+
+Para habilitar el reto diario y clasificaciones, ejecuta en Supabase SQL editor:
+
+- `database/daily_challenge_runs.sql`
+
+## Desarrollo
+
+```bash
+npm install
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+npm run preview
+```

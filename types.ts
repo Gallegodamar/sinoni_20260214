@@ -1,29 +1,40 @@
-export interface DailyQuestion {
-  id: string;
-  targetWord: string;
-  options: string[]; // Should contain 3 options, one of them being the correctSynonym
-  correctSynonym: string;
+
+export interface WordData {
+  id: string | number;
+  hitza: string;
+  sinonimoak: string[];
 }
 
-export interface UserAnswer {
-  questionId: string;
-  targetWord: string;
-  selectedOption: string;
-  correctSynonym: string;
-  isCorrect: boolean;
-  score: number; // Puntuazioa galdera bakoitzeko
+export interface Player {
+  id: number;
+  name: string;
+  score: number;
+  time: number;
 }
 
-export type GameState = 'START_SCREEN' | 'LOADING' | 'PLAYING' | 'RESULTS' | 'ERROR';
-
-export interface StoredGameData {
-  questions: DailyQuestion[];
-  fetchTimestamp: string; // ISO string
-  // lastPlayedDate?: string; // ISO string, noiz jokatu zen azkenekoz - REMOVED
+export interface Question {
+  wordData: WordData;
+  correctAnswer: string;
+  options: string[];
 }
 
-export enum FeedbackType {
-  NONE = 'NONE',
-  CORRECT = 'CORRECT',
-  INCORRECT = 'INCORRECT',
+export interface HistoryTabStats {
+  level: number;
+  words: number;
+  correct: number;
+  wrong: number;
+  percentage: number;
+  sessions: number;
+}
+
+export type DifficultyLevel = 1 | 2 | 3 | 4;
+
+export enum GameStatus {
+  SETUP = 'SETUP',
+  INTERMISSION = 'INTERMISSION',
+  PLAYING = 'PLAYING',
+  SUMMARY = 'SUMMARY',
+  REVIEW = 'REVIEW',
+  AUTH = 'AUTH',
+  CONTRIBUTE = 'CONTRIBUTE'
 }
